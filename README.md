@@ -7,11 +7,14 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 然后, 本项目目前只具备了一个视频网站的基本雏形, 后续开发会持续加入新模块, 并且项目目前使用springboot框架
 搭建, 后续会换成spring cloud alibaba.
 
+# Api 文档
+![](https://cdn.jsdelivr.net/gh/kyralo/aurora-server/aurora-server-api.png)
+
 # 演示DEMO
-![AURORA](https://aurora.kyralo.online)
+[AURORA](https://aurora.kyralo.online)
 
 # 前端项目地址
-![aurora-server](https://github.com/kyralo/aurora-web)
+[aurora-server](https://github.com/kyralo/aurora-web)
 
 # 项目用到的后端技术
 - 基本骨架: Springboot + Mybatis
