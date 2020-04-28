@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * \* Created with IntelliJ IDEA.
+ * \* @author 王宸
  * \* Date: 2018-11-10
  * \* Time: 下午3:05
- * \* Description:spring web mvc 配置
+ * \* Description:spring web mvc 配置 [开发环境使用]
  * \
- * @author 王宸
  */
 @Configuration
 @Profile({"dev","test","github"})
@@ -28,6 +28,7 @@ public class WebMvcDevConfig implements WebMvcConfigurer {
 
     /**
      * 跨域设置
+     * 开发环境配置, 生产环境使用nginx进行跨域处理
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {

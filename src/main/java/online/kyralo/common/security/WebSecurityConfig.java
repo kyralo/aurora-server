@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                     "/api/v2/video_kind/**",
                                     "/api/v2/user_comment/**"
                 ).permitAll().and().
-                authorizeRequests().antMatchers("/", "/docs.html",
+                authorizeRequests().antMatchers("/", "/api", "/docs.html",
                         "/v2/api-docs",
                         "/swagger-resources",
                         "/swagger-resources/configuration/ui",
