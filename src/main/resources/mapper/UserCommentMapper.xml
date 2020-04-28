@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.kyralo.user.dao.UserCommentMapper">
+  <resultMap id="userComment" type="online.kyralo.user.domain.UserComment">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="video_id" jdbcType="CHAR" property="videoId" />
+    <result column="send_id" jdbcType="CHAR" property="sendId" />
+    <result column="answer_id" jdbcType="CHAR" property="answerId" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="dislikes" jdbcType="INTEGER" property="dislikes" />
+    <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="ancestry_id" jdbcType="CHAR" property="ancestryId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+    <select id="listLevel1Comments" resultType="online.kyralo.user.domain.Comment">
+        select  user_comment.id,
+                answer_id as answerId,
+                send_id as sendId,
+                likes,
+                dislikes,
+                video_id as videoId,
+                avatar_url as sendAvatarUrl,
+                name as sendName,
+                comment_content as commentContent,
+                ancestry_id as ancestryId,
+                user_comment.create_time as createTime
+        from user_comment, user
+        where user_comment.send_id = user.id
+        and user_comment.video_id = #{videoId}
+        and answer_id is null
+        order by user_comment.create_time desc
+    </select>
+
+    <select id="listLevel2Comments" resultType="online.kyralo.user.domain.Comment">
+        select  user_comment.id,
+                answer_id as answerId,
+                send_id as sendId,
+                likes,
+                dislikes,
+                video_id as videoId,
+                avatar_url as sendAvatarUrl,
+                name as sendName,
+                comment_content as commentContent,
+                ancestry_id as ancestryId,
+                user_comment.create_time as createTime
+        from user_comment, user
+        where user_comment.send_id = user.id
+        and video_id = #{videoId}
+        and ancestry_id = #{ancestryId}
+        order by user_comment.create_time desc
+    </select>
+
+</mapper>

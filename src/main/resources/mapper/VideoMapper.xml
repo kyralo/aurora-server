@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.kyralo.video.dao.VideoMapper">
+  <resultMap id="video" type="online.kyralo.video.domain.Video">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="author_id" jdbcType="CHAR" property="authorId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="kind_id" jdbcType="INTEGER" property="kindId" />
+    <result column="cover_url" jdbcType="VARCHAR" property="coverUrl" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="fettle" jdbcType="CHAR" property="fettle" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="dislikes" jdbcType="INTEGER" property="dislikes" />
+    <result column="collections" jdbcType="INTEGER" property="collections" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+    <select id="queryVideoById" resultType="online.kyralo.video.domain.VideoList">
+      select  video.id,
+              author_id as authorId,
+              avatar_url as authorAvatar,
+              user.name as authorName,
+              title,
+              likes,
+              dislikes,
+              collections,
+              introduction,
+              kind_id as kindId,
+              cover_url as coverUrl,
+              video_url as videoUrl,
+              video.fettle,
+              video.create_time as createTime
+      from video, user
+      where video.id = #{id}
+        and author_id = user.id
+    </select>
+
+    <select id="listByTitleOrIntro" resultType="online.kyralo.video.domain.VideoList">
+        select  video.id,
+                author_id as authorId,
+                avatar_url as authorAvatar,
+                user.name as authorName,
+                title,
+                introduction,
+                kind_id as kindId,
+                cover_url as coverUrl,
+                video_url as videoUrl,
+                video.fettle,
+                video.create_time as createTime
+        from video, user, video_kind
+        where video.author_id = user.id
+        and video.kind_id = video_kind.id
+        and title like CONCAT('%',#{str},'%')
+        union
+        select  video.id,
+            author_id as authorId,
+            avatar_url as authorAvatar,
+            user.name as authorName,
+            title,
+            introduction,
+            kind_id as kindId,
+            cover_url as coverUrl,
+            video_url as videoUrl,
+            video.fettle,
+            video.create_time as createTime
+        from video, user, video_kind
+        where video.author_id = user.id
+        and video.kind_id = video_kind.id
+        and introduction like CONCAT('%',#{str},'%')
+        union
+        select  video.id,
+            author_id as authorId,
+            avatar_url as authorAvatar,
+            user.name as authorName,
+            title,
+            introduction,
+            kind_id as kindId,
+            cover_url as coverUrl,
+            video_url as videoUrl,
+            video.fettle,
+            video.create_time as createTime
+        from video, user, video_kind
+        where video.author_id = user.id
+        and video.kind_id = video_kind.id
+        and video_kind.name like CONCAT('%',#{str},'%')
+    </select>
+
+    <select id="listVideosByKind" resultType="online.kyralo.video.domain.VideoList">
+        select  video.id,
+                author_id as authorId,
+                avatar_url as authorAvatar,
+                user.name as authorName,
+                title,
+                introduction,
+                kind_id as kindId,
+                cover_url as coverUrl,
+                video_url as videoUrl,
+                video.fettle,
+                video.create_time as createTime
+                from video, user
+        where video.author_id = user.id
+            and kind_id = #{videoKindId}
+    </select>
+
+    <select id="listVideos" resultType="online.kyralo.video.domain.VideoList">
+      select video.id,
+             author_id as authorId,
+             avatar_url as authorAvatar,
+             user.name as authorName,
+             title,
+             likes,
+             dislikes,
+             collections,
+             introduction,
+             kind_id as kindId,
+             cover_url as coverUrl,
+             video_url as videoUrl,
+             video.fettle,
+             video.create_time as createTime
+      from video, user
+      where video.author_id = user.id
+    </select>
+</mapper>

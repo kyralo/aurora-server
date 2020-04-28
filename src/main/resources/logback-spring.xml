@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <springProfile name="dev | test">
+        <property name="log.path" value="logs"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <property name="log.path" value="/var/log/java/aurora"/>
+        <include resource="appender.xml"/>
+        <root level="DEBUG">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="ERROR"/>
+            <appender-ref ref="WARN"/>
+            <appender-ref ref="INFO"/>
+        </root>
+    </springProfile>
+
+</configuration>

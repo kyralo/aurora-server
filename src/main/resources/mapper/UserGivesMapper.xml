@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.kyralo.user.dao.UserGivesMapper">
+  <resultMap id="userGives" type="online.kyralo.user.domain.UserGives">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="target_id" jdbcType="CHAR" property="targetId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="action_type" jdbcType="TINYINT" property="actionType"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <select id="countGives" resultType="integer">
+    select count(id)
+    from user_gives
+    where target_id = #{targetId}
+      and type = #{type}
+  </select>
+
+  <select id="listsUserGivesForComments" resultType="online.kyralo.user.domain.GivesForComments">
+    select user_gives.id,
+           user_id as userId,
+           target_id as userCommentId,
+           video_id as videoId,
+           send_id as sendId,
+           answer_id as answerId,
+           action_type as actionType,
+           user_comment.type,
+           comment_content as commentContent,
+           comment_image_url as commentImageUrl,
+           user_gives.create_time as createTime,
+           user_gives.update_time as updateTime
+    from user_gives, user_comment
+    where user_id = #{userId}
+      and user_gives.target_id = user_comment.id
+  </select>
+
+  <select id="listsUserGivesForVideo" resultType="online.kyralo.user.domain.GivesForVideo">
+    select id,
+           user_id as userId,
+           video_id as videoId,
+           video_kind as kindId,
+           title,
+           action_type as actionType
+           introduction,
+           cover_url as coverUrl,
+           video_url as videoUrl,
+           fettle,
+           user_gives.create_time as createTime,
+           user_gives.update_time as updateTime
+    from user_gives, video
+    where user_id = #{userId}
+    and user_gives.target_id = video.id
+  </select>
+
+</mapper>

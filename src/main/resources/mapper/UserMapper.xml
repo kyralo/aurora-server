@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.kyralo.user.dao.UserMapper">
+  <resultMap id="user" type="online.kyralo.user.domain.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="mail" jdbcType="VARCHAR" property="mail"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="sex" jdbcType="CHAR" property="sex"/>
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl"/>
+    <result column="fettle" jdbcType="CHAR" property="fettle"/>
+    <result column="sign" jdbcType="VARCHAR" property="sign"/>
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <select id="queryByMail" resultMap="user">
+    select id, password, name, mail, sex, sign, avatar_url, fettle, create_time, update_time
+    from user
+    where mail = #{mail}
+      and fettle = '0'
+  </select>
+
+  <select id="listByName" resultMap="user">
+    select id, name, mail, sex, sign, avatar_url, fettle, create_time, update_time
+    from user
+    where name like CONCAT('%',#{name},'%')
+  </select>
+
+</mapper>

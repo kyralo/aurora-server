@@ -1,0 +1,28 @@
+spring:
+  # 开发环境配置
+  profiles:
+    active: dev
+
+
+# mybatis 配置
+pagehelper:
+  supportMethodsArguments: true
+  reasonable: true
+  helperDialect: mysql
+  params: count=countSql
+
+# mybatis 配置
+mybatis:
+  configuration:
+    aggressive-lazy-loading: false
+  mapperLocations: classpath:mapper/*.xml
+
+mapper:
+  identity: MYSQL
+  not-empty: false
+  mappers: tk.mybatis.mapper.common.Mapper
+
+# log 日志打印
+logging:
+  config: classpath:logback-spring.xml
+

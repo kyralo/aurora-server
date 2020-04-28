@@ -1,0 +1,35 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+
+.idea
+
+target/**
+
+*.iml
+start.sh
+stop.sh
+
+upload
+
+test
+
+static
+
+application-dev.yml
+application-prod.yml
+application-test.yml
+application-linux.yml
+

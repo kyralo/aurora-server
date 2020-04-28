@@ -1,0 +1,112 @@
+server:
+  port: 9988
+  servlet:
+    context-path: /
+
+spring:
+  # 数据库库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/aurora?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf-8
+    username: root
+    # todo 数据库密码
+    password: 123456
+
+    # druid 配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-pool-prepared-statement-per-connection-size: 20
+      min-idle: 5
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        profile-enable: true
+      max-active: 20
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      validation-query: show status like '%Service_Status%';
+      filters: stat,wall
+      max-wait: 60000
+      filter:
+        stat:
+          db-type: mysql
+          slow-sql-millis: 1000
+          log-slow-sql: true
+        wall:
+          db-type: mysql
+          config:
+            multi-statement-allow: true
+          enabled: true
+      test-on-borrow: false
+      stat-view-servlet:
+        login-password: admin
+        login-username: admin
+      pool-prepared-statements: true
+      initial-size: 5
+      min-evictable-idle-time-millis: 300000
+      test-on-return: false
+
+  # 文件上传设置
+  servlet:
+    multipart:
+      max-request-size: 300MB
+      max-file-size: 300MB
+      location:
+      file-size-threshold: 0
+      enabled: true
+      resolve-lazily: false
+
+  # jackson序列化配置
+  jackson:
+    serialization:
+      indent-output: true
+    default-property-inclusion: non_null
+    generator:
+      escape-non-ascii: true
+
+  #邮件发送配置
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com
+    # todo 邮箱配置
+    username: yourmail@163.com
+    password: yourpass
+    port: 465
+    protocol: smtp
+    properties:
+      mail:
+        imap:
+          ssl:
+            socketFactory:
+              fallback: false
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.fintech.modules.base.util.mail.MailSSLSocketFactory
+          starttls:
+            enable: true
+            required: true
+
+  # redis 配置
+  redis:
+    database: 9
+    port: 6379
+    host: localhost
+    # todo redis 密码
+    password: yourpass
+    lettuce:
+      pool:
+        max-idle: 500
+        min-idle: 50
+        max-active: 1000
+        max-wait: 2000
+    timeout: 3000
+
+# 文件上传路径
+aurora:
+  fileup:
+    # todo 文件上传到本地的路径 自己修改
+    root_path: C:/upload/
+
+
