@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -21,7 +22,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "user_collection")
 @ApiModel(value = "userCollection", description = "用户收藏")
-public class UserCollection {
+public class UserCollection implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

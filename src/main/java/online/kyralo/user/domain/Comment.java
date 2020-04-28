@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.Column;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 @Data
-public class Comment {
+public class Comment implements Serializable {
     @ApiModelProperty(value = "用户评论id", name = "id")
     private String id;
 

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 /**
  * \* Created with Intellij IDEA.
@@ -18,7 +19,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @ApiModel(value = "register", description = "注册信息")
-public class RegisterVo {
+public class RegisterVo implements Serializable {
 
     @ApiModelProperty(value = "用户名", name = "name")
     private String name;

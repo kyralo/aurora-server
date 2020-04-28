@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Date;
  */
 
 @Data
-public class GivesForComments {
+public class GivesForComments implements Serializable {
 
     @ApiModelProperty(value = "用户点赞id", name = "id")
     private Integer id;

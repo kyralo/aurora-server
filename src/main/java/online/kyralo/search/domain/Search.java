@@ -5,6 +5,7 @@ import lombok.Data;
 import online.kyralo.user.domain.User;
 import online.kyralo.video.domain.VideoList;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ import java.util.Set;
  */
 
 @Data
-public class Search {
+public class Search  implements Serializable {
 
     @ApiModelProperty(value = "视频搜索列表", name = "videos")
     private Set<VideoList> videos;

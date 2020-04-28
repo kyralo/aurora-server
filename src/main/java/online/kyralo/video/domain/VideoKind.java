@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "video_kind")
 @ApiModel(value = "videoKind", description = "视频类型")
-public class VideoKind {
+public class VideoKind implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

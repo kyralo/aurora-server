@@ -20,7 +20,7 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 - 基本骨架: Springboot + Mybatis
 - 数据库: MySQL (使用阿里druid数据库连接池技术)
 - 鉴权: Spring security + jwt
-- 缓存: Redis 
+- 缓存: Redis (视频热门模块, 用户点赞模块使用到)
 - 定时任务: Spring Task
 - 邮件: Spring mail
 - 日志记录: Logback
