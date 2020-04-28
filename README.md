@@ -14,7 +14,7 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 [AURORA](https://aurora.kyralo.online)
 
 # 前端项目地址
-[aurora-server](https://github.com/kyralo/aurora-web)
+[aurora-web](https://github.com/kyralo/aurora-web)
 
 # 项目用到的后端技术
 - 基本骨架: Springboot + Mybatis
