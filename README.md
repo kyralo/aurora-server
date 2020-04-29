@@ -7,6 +7,7 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 然后, 本项目目前只具备了一个视频网站的基本雏形, 后续开发会持续加入新模块, 
 并且项目目前使用springboot框架搭建, 后续会换成spring cloud alibaba.
 
+
 # Api 文档
 ![](https://cdn.jsdelivr.net/gh/kyralo/aurora-server/aurora-server-api.png)
 
@@ -31,3 +32,92 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 # 用到的库
 - tk.mybatis 用于基础SQL的生成
 - hutool 和 guava 通用工具类集成
+
+# 项目目录结构
+    AuroraApplication.java
+    ├── common
+    │   ├── config
+    │   │   ├── DaoConfig.java
+    │   │   ├── RedisConfig.java
+    │   │   ├── SwaggerConfig.java
+    │   │   ├── TaskExecutorConfig.java
+    │   │   ├── WebMvcConfig.java
+    │   │   └── WebMvcDevConfig.java
+    │   ├── constants
+    │   │   ├── CommonConstants.java
+    │   │   ├── SecurityConstants.java
+    │   │   └── VideoConstants.java
+    │   ├── security
+    │   │   ├── MethodSecurityConfig.java
+    │   │   ├── RestAuthenticationEntryPoint.java
+    │   │   ├── WebSecurityConfig.java
+    │   │   └── filter
+    │   ├── task
+    │   │   ├── CommentTask.java
+    │   │   ├── GivesTask.java
+    │   │   └── VideoTask.java
+    │   └── util
+    │       ├── CommonUtil.java
+    │       ├── ErrorMessage.java
+    │       ├── FileUpUtil.java
+    │       └── JwtUtil.java
+    ├── fileup
+    │   ├── service
+    │   │   ├── FileUpService.java
+    │   │   └── impl
+    │   └── web
+    │       └── FileUpController.java
+    ├── search
+    │   ├── domain
+    │   │   └── Search.java
+    │   ├── service
+    │   │   ├── SearchService.java
+    │   │   └── impl
+    │   └── web
+    │       └── SearchController.java
+    ├── user
+    │   ├── dao
+    │   │   ├── UserCollectionMapper.java
+    │   │   ├── UserCommentMapper.java
+    │   │   ├── UserGivesMapper.java
+    │   │   └── UserMapper.java
+    │   ├── domain
+    │   │   ├── Comment.java
+    │   │   ├── GivesForComments.java
+    │   │   ├── GivesForVideo.java
+    │   │   ├── RegisterVo.java
+    │   │   ├── User.java
+    │   │   ├── UserCollection.java
+    │   │   ├── UserComment.java
+    │   │   └── UserGives.java
+    │   ├── service
+    │   │   ├── LoginService.java
+    │   │   ├── MailService.java
+    │   │   ├── UserCollectionService.java
+    │   │   ├── UserCommentService.java
+    │   │   ├── UserGivesService.java
+    │   │   ├── UserService.java
+    │   │   └── impl
+    │   └── web
+    │       ├── LoginController.java
+    │       ├── UserCollectionController.java
+    │       ├── UserCommentController.java
+    │       ├── UserController.java
+    │       └── UserGivesController.java
+    └── video
+        ├── dao
+        │   ├── VideoKindMapper.java
+        │   └── VideoMapper.java
+        ├── domain
+        │   ├── Video.java
+        │   ├── VideoKind.java
+        │   └── VideoList.java
+        ├── service
+        │   ├── VideoKindService.java
+        │   ├── VideoService.java
+        │   └── impl
+        └── web
+            ├── VideoController.java
+            └── VideoKindController.java
+
+
