@@ -93,12 +93,12 @@ public class FileUpServiceImpl implements FileUpService {
 
     @Override
     public ResponseEntity<?> avatarUpForUser(MultipartFile file, String userId) {
-        return imageUp(file,"user/","avatar/img/", userId, "avatar");
+        return imageUp(file,"user/","avatar/img/", userId, "avatar_" + System.currentTimeMillis());
     }
 
     @Override
     public ResponseEntity<?> imageUpForVideo(MultipartFile file, String userId) {
-        return imageUp(file,"videos/","cover/", userId, "");
+        return imageUp(file,"videos/","cover/", userId, "image_" + System.currentTimeMillis());
     }
 
     @Override
