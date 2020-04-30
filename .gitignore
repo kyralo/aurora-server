@@ -24,10 +24,6 @@ stop.sh
 
 upload
 
-test
-
-static
-
 application-dev.yml
 application-prod.yml
 application-test.yml
