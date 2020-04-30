@@ -29,3 +29,4 @@ application-prod.yml
 application-test.yml
 application-linux.yml
 
+!/src/main/resources/static/
