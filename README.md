@@ -25,7 +25,7 @@ aurora是一个视频网站, 这是aurora项目的后端源码,
 - 定时任务: Spring Task
 - 邮件: Spring mail
 - 日志记录: Logback
-- 文件上传: 现在暂时是本地上传(之后会引入阿里oss)
+- 文件上传: [alioss](https://oss.console.aliyun.com/)
 - api文档: Swagger (样式引用了GitHub上作者caspar-chen写的样式)
 - 项目构建工具: Maven
 
