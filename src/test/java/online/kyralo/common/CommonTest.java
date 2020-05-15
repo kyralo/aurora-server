@@ -6,7 +6,9 @@ import online.kyralo.common.util.JwtUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * \* Created with Intellij IDEA.
@@ -53,6 +55,17 @@ public class CommonTest {
         assert claims != null;
         System.out.println(claims.getAudience());
 
+    }
+
+    @Test
+    public void time(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd/");
+        System.out.println(format.format(new Date()));
+    }
+
+    @Test
+    public void uuid(){
+        System.out.println(UUID.randomUUID().toString().replace("-", ""));
     }
 
 

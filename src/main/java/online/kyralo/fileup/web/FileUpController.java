@@ -26,7 +26,7 @@ import static online.kyralo.common.constants.SecurityConstants.HEADER_STRING;
  */
 @RestController
 @RequestMapping("/api/v2/file_up")
-@Api("文件上传接口")
+@Api("文件上传[本地]接口")
 public class FileUpController {
 
     @Resource

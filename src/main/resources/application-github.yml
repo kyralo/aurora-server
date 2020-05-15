@@ -110,3 +110,30 @@ aurora:
     root_path: C:/upload/
 
 
+# OSS相关配置信息 todo 配置自己的
+aliyun:
+  oss:
+    # oss对外服务的访问域名
+    endpoint: ----
+    # 访问身份验证中用到用户标识
+    accessKeyId: ----
+    # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    accessKeySecret: ----
+    # oss的存储空间
+    bucketName: bucket
+    policy:
+      # 签名有效期(S)
+      expire: 300
+    # 上传文件大小(M)
+    maxSize: 300
+    # 文件上传成功后的回调地址
+    # callback: http://localhost:9988/aliyun/oss/callback
+    dir:
+      # 上传文件夹路径前缀
+      prefix: aurora/
+      # 自定义路径
+      user:
+        avatar: user/avatar/
+      video:
+        cover: video/cover/
+        media: video/media/

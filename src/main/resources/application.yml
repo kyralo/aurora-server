@@ -15,7 +15,7 @@ pagehelper:
 mybatis:
   configuration:
     aggressive-lazy-loading: false
-  mapperLocations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
 
 mapper:
   identity: MYSQL

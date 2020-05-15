@@ -12,7 +12,7 @@ import java.util.Objects;
  * \* @author: WangChen
  * \* Date: 19-7-25
  * \* Time: 下午8:45
- * \
+ * \* Description: 本地文件上传工具类
  */
 @Component
 public class FileUpUtil {

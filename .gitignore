@@ -30,3 +30,4 @@ application-test.yml
 application-linux.yml
 
 *.html
+index.html

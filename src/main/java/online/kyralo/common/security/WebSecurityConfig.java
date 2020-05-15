@@ -46,7 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 exceptionHandling().
                 authenticationEntryPoint(new RestAuthenticationEntryPoint()).and().
                 authorizeRequests().antMatchers(
-                        "/api/v2/user/login",
+                                    "/api/v2/oss/**",
+                                    "/api/v2/user/login",
                                     "/api/v2/user/login/**",
                                     "/api/v2/user/register"
                                     ).permitAll().and().
@@ -61,6 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                     "/api/v2/user_comment/**"
                 ).permitAll().and().
                 authorizeRequests().antMatchers("/", "/api", "/docs.html",
+                        "/favicon.ico",
                         "/v2/api-docs",
                         "/swagger-resources",
                         "/swagger-resources/configuration/ui",
